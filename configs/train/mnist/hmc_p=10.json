@@ -1,0 +1,63 @@
+{
+    "output_dir": "hmc_p=10",
+    "seed": 1,
+    "training": {
+        "type": "hmc",
+        "params": {
+            "p": 10,
+            "m": 25,
+            "l": 2,
+            "epsilon": 0.3,
+            "path_len": 0.6,
+            "sigma": 0.1
+        },
+        "epochs": 10,
+        "test_interval": 10,
+        "checkpoint_interval": 10,
+        "opt": {
+            "type": "adam",
+            "params": {
+                "lr": 1e-3
+            }
+        },
+        "lr_schedule": "multi_step"
+    },
+    "data": {
+        "dataset": "mnist",
+        "num_workers": 2,
+        "root": "../data/mnist",
+        "use_half": false,
+        "training": {
+            "flip_crop": false,
+            "batch_size": 128
+        },
+        "test": {
+            "batch_size": 128
+        }
+    },
+    "evaluations": [
+        {
+            "type": "standard",
+            "params": {}
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "epsilon": 0.03,
+                "p": 10,
+                "m": 50
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "p": 10,
+                "m": 25,
+                "l": 2,
+                "epsilon": 0.3,
+                "path_len": 0.6,
+                "sigma": 0.1
+            }
+        }
+    ]
+}

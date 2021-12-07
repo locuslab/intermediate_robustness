@@ -1,0 +1,105 @@
+{
+    "output_dir": "hmc_p=1000",
+    "seed": 1,
+    "training": null,
+    "data": {
+        "dataset": "mnist",
+        "num_workers": 1,
+        "root": "../data/mnist",
+        "training": null,
+        "test": {
+            "batch_size": 128
+        },
+        "use_half": false
+    },
+    "evaluations": [
+        {
+            "type": "standard",
+            "params": {}
+        },
+        {
+            "type": "adversarial",
+            "params": {
+                "epsilon": 0.3,
+                "m": 100
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "m": 2000,
+                "p": 1,
+                "epsilon": 0.3
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "m": 2000,
+                "p": 10,
+                "epsilon": 0.3
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "m": 2000,
+                "p": 100,
+                "epsilon": 0.3
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "m": 2000,
+                "p": 1000,
+                "epsilon": 0.3
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.3,
+                "p": 1,
+                "m": 100,
+                "l": 20,
+                "path_len": 0.6,
+                "sigma": 0.1
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.3,
+                "p": 10,
+                "m": 100,
+                "l": 20,
+                "path_len": 0.6,
+                "sigma": 0.1
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.3,
+                "p": 100,
+                "m": 100,
+                "l": 20,
+                "path_len": 0.4,
+                "sigma": 0.1
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.3,
+                "p": 1000,
+                "m": 100,
+                "l": 20,
+                "path_len": 0.2,
+                "sigma": 0.1
+            }
+        }
+    ],
+    "checkpoint_filename": "experiments/mnist/hmc_p=1000_seed=2/checkpoints/checkpoint_9.pth"
+}

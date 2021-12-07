@@ -1,0 +1,49 @@
+{
+    "output_dir": "random_sampling_p=1",
+    "seed": 1,
+    "training": {
+        "type": "random_sampling",
+        "params": {
+            "m": 50,
+            "p": 1,
+            "epsilon": 0.3
+        },
+        "epochs": 10,
+        "test_interval": 10,
+        "checkpoint_interval": 10,
+        "opt": {
+            "type": "adam",
+            "params": {
+                "lr": 1e-3
+            }
+        },
+        "lr_schedule": "multi_step"
+    },
+    "data": {
+        "dataset": "mnist",
+        "num_workers": 1,
+        "root": "../data/mnist",
+        "training": {
+            "flip_crop": false,
+            "batch_size": 128
+        },
+        "test": {
+            "batch_size": 128
+        },
+        "use_half": false
+    },
+    "evaluations": [
+        {
+            "type": "standard",
+            "params": {}
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "p": 1,
+                "m": 50,
+                "epsilon": 0.3
+            }
+        }
+    ]
+}

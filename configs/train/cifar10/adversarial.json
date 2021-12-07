@@ -1,0 +1,52 @@
+{
+    "output_dir": "adversarial",
+    "seed": 1,
+    "training": {
+        "type": "adversarial",
+        "params": {
+            "m": 10,
+            "epsilon": 0.03,
+            "alpha_scale": 2.5
+        },
+        "epochs": 20,
+        "test_interval": 1,
+        "checkpoint_interval": 1,
+        "opt": {
+            "type": "sgd",
+            "params": {
+                "lr": 0.1,
+                "momentum": 0.9,
+                "weight_decay": 5e-4,
+                "nesterov": true
+            }
+        },
+        "lr_schedule": "multi_step"
+    },
+    "data": {
+        "dataset": "cifar10",
+        "num_workers": 2,
+        "root": "../data/cifar10",
+        "training": {
+            "flip_crop": false,
+            "batch_size": 128
+        },
+        "test": {
+            "batch_size": 128
+        },
+        "use_half": false
+    },
+    "evaluations": [
+        {
+            "type": "standard",
+            "params": {}
+        },
+        {
+            "type": "adversarial",
+            "params": {
+                "m": 20,
+                "epsilon": 0.03,
+                "alpha_scale": 2.5
+            }
+        }
+    ]
+}

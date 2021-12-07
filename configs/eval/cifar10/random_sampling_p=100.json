@@ -1,0 +1,110 @@
+{
+    "output_dir": "random_sampling_p=100",
+    "seed": 1,
+    "training": null,
+    "data": {
+        "dataset": "cifar10",
+        "num_workers": 2,
+        "root": "../data/cifar10",
+        "training": null,
+        "test": {
+            "batch_size": 128
+        },
+        "use_half": false
+    },
+    "evaluations": [
+        {
+            "type": "standard",
+            "params": {}
+        },
+        {
+            "type": "adversarial",
+            "params": {
+                "epsilon": 0.03,
+                "m": 50,
+                "restarts": 10
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "epsilon": 0.03,
+                "p": 1,
+                "m": 500
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "epsilon": 0.03,
+                "p": 10,
+                "m": 500
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "epsilon": 0.03,
+                "p": 100,
+                "m": 500
+            }
+        },
+        {
+            "type": "random_sampling",
+            "params": {
+                "epsilon": 0.03,
+                "p": 1000,
+                "m": 500
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.03,
+                "p": 1,
+                "m": 100,
+                "l": 10,
+                "path_len": 0.6,
+                "sigma": 0.1,
+                "anneal_theta": true
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.03,
+                "p": 10,
+                "m": 50,
+                "l": 10,
+                "path_len": 0.6,
+                "sigma": 0.1,
+                "anneal_theta": true
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.03,
+                "p": 100,
+                "m": 50,
+                "l": 10,
+                "path_len": 0.4,
+                "sigma": 0.1,
+                "anneal_theta": true
+            }
+        },
+        {
+            "type": "hmc",
+            "params": {
+                "epsilon": 0.03,
+                "p": 1000,
+                "m": 50,
+                "l": 10,
+                "path_len": 0.09,
+                "sigma": 0.1,
+                "anneal_theta": true
+            }
+        }
+    ],
+    "checkpoint_filename": "experiments/cifar10/random_sampling_p=100_seed=2/checkpoints/checkpoint_199.pth"
+}

@@ -1,0 +1,38 @@
+{
+    "output_dir": "standard",
+    "seed": 1,
+    "training": {
+        "type": "standard",
+        "params": {},
+        "epochs": 50,
+        "test_interval": 10,
+        "checkpoint_interval": 10,
+        "opt": {
+            "type": "sgd",
+            "params": {
+                "lr": 0.1,
+                "momentum": 0.9,
+                "weight_decay": 5e-4,
+                "nesterov": true
+            }
+        }
+    },
+    "data": {
+        "dataset": "cifar10",
+        "num_workers": 2,
+        "root": "../data/cifar10",
+        "training": {
+            "flip_crop": true,
+            "batch_size": 128
+        },
+        "test": {
+            "batch_size": 128
+        }
+    },
+    "evaluations": [
+        {
+            "type": "standard",
+            "params": {}
+        }
+    ]
+}
